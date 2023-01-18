@@ -17,4 +17,6 @@ Function "function plot_points_conic_and_objective_function", whose name is self
   px, py...see above  
   Conic...see above  
   obj_function...see above  
-  plot_area...are of plot in the form [x_left x_right y_left y_right]  
+  plot_area...area of plot in the form of the vector of boundaries [x_left x_right y_left y_right]  
+
+All the algorithms can be tested on a sample dataset using the file "Test.m"  
