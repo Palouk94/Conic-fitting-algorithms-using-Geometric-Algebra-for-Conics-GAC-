@@ -8,7 +8,7 @@
 All the algorithms have the same inputs and outputs:  
 Inputs:  
   px, py...row vectors of x or y coordinates of data points, respectively  
-Outputs:
-  Q...conic vector in terms of GAC
-  Conic...implicit equation of conic Q
-  obj_function...minimised objective function of teh conic fitting problem
+Outputs:  
+  Q...conic vector in terms of GAC  
+  Conic...implicit equation of conic Q  
+  obj_function...minimised objective function of the conic fitting problem  
