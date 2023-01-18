@@ -25,7 +25,7 @@ plot_points_conic_and_objective_function(px, py, Conic, obj_function, plot_area)
 [Q, Conic, obj_function] = Algorithm_Q0_sym(px,py);
 plot_points_conic_and_objective_function(px, py, Conic, obj_function, plot_area)
 
-%% Axes-aligned origin-centred conic Q^AL0
+%% Axes-aligned origin-centred conic Q^al0
 [Q, Conic, obj_function] = Algorithm_QAL0(px,py);
 plot_points_conic_and_objective_function(px, py, Conic, obj_function, plot_area)
 
