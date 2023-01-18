@@ -1,0 +1,49 @@
+function [Q, Conic, obj_function] = Algorithm_QAL(px,py) 
+
+p = [px;py];
+N = length(px);
+
+B = zeros(5);
+I2 = [0 1; 1 0];
+B(1:2,4:5) = -I2;
+B(3:4,2:3) = eye(2);
+B(5,1) = -1;	
+Bc = B(2:5,1:4);
+
+D = ones(5,N);
+D(2:3,:) = p;
+D(4,:) = 1/2*(p(1,:).^2+p(2,:).^2);
+D(5,:) = 1/2*(p(1,:).^2-p(2,:).^2);
+
+P = 1/N*B*(D*D')*B';
+Pc = P(2:5,2:5);
+P0 = P(1,1);
+P1 = P(1,2:5);
+
+Pcon = Bc*(Pc-P1'*1/P0*P1); 
+[EV,ED] = eig(Pcon);
+EW = diag(ED);
+
+k_opt = find(EW == min(EW(EW>0)));
+v_opt = EV(:,k_opt);
+
+kappa = v_opt'*Bc*v_opt;
+v_opt = 1/sqrt(kappa)*v_opt;
+
+w = -1/P0*P1*v_opt;    
+Q = [0;w;v_opt;0;0];  
+
+Qr = [w;v_opt];
+
+q11 = -1/2*(Q(3) + Q(2));
+q22 = -1/2*(Q(3) - Q(2));
+q33 = -Q(6);
+q12 = -1/2*Q(1);
+q13 = 1/2*Q(4);
+q23 = 1/2*Q(5);
+
+Conic = @(x,y) q11*x^2 + 2*q12*x*y + q22*y^2 + 2*q13*x + 2*q23*y + q33;
+obj_function = Qr'*P*Qr;
+
+end
+
