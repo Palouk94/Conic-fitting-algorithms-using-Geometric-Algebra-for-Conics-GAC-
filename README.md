@@ -12,3 +12,9 @@ Outputs:
   Q...conic vector in terms of GAC  
   Conic...implicit equation of conic Q  
   obj_function...minimised objective function of the conic fitting problem  
+
+Function "function plot_points_conic_and_objective_function", whose name is self-descriptive, has inputs:  
+  px, py...see above  
+  Conic...see above  
+  obj_function...see above  
+  plot_area...are of plot in the form [x_left x_right y_left y_right]  
